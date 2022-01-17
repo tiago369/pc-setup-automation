@@ -1,3 +1,6 @@
+#!/bin/bash
+# https://learnopencv.com/install-opencv3-on-ubuntu/
+
 sudo apt-get update
 sudo apt-get upgrade
 
