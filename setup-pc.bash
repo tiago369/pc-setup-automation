@@ -71,6 +71,11 @@ tlmgr install abntex2
 tlmgr update abntex2
 tlmgr init-usertree
 
+# Install Opencv
+sudo apt update
+sudo apt install libopencv-dev python3-opencv
+python3 -c "import cv2; print(cv2.__version__)"
+
 # Install telegram
 wget "https://telegram.org/dl/desktop/linux" -O telegram.tar.xz
 sudo tar -xvf telegram.tar.xz -C /opt

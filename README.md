@@ -13,8 +13,9 @@ Ubuntu 20.04
 5. Element
 6. ROS Noetic
 7. Docker
-8. Latex
-9. Telegram
-10. Whatsie (Whatsapp Desktop)
-11. Tweaks
-12. Todoist
+8. Opencv
+9. Latex
+10. Telegram
+11. Whatsie (Whatsapp Desktop)
+12. Tweaks
+13. Todoist
