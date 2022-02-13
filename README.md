@@ -4,7 +4,7 @@ This repository consist in some archives used for fast configuration of my pc fo
 
 ## How do a dualboot in your pc
 
-![Diolinux](https://www.youtube.com/watch?v=6D6L9Wml1oY)[![Diolinux](http://img.youtube.com/vi/6D6L9Wml1oY/0.jpg)](http://www.youtube.com/watch?v=6D6L9Wml1oY "Como fazer DUAL BOOT com Windows 10 e Linux - Tutorial FÁCIL - 2021")
+[![Diolinux](http://img.youtube.com/vi/6D6L9Wml1oY/0.jpg)](http://www.youtube.com/watch?v=6D6L9Wml1oY "Como fazer DUAL BOOT com Windows 10 e Linux - Tutorial FÁCIL - 2021")
 
 ## OS Compatible
 Ubuntu 20.04
