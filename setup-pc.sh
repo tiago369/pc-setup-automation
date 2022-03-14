@@ -70,4 +70,16 @@ sudo apt install ros-foxy-desktop
 echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 
+# Install latex
+sudo add-apt-repository ppa:jonathonf/texlive
+sudo apt update   
+sudo apt install texlive-full
+tlmgr install abntex2        
+tlmgr update abntex2
+tlmgr init-usertree
 
+# Install Drawio
+sudo snap install drawio
+
+# Install Bitwarden
+sudo snap install bitwarden
