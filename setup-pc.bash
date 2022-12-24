@@ -23,12 +23,12 @@ cv2=true
 
 # Install git
 if $git ; then
-  sudo apt-get install git
+  sudo apt-get install git -y
 fi
 
 # Install terminator
 if $terminator ; then
-  sudo apt install terminator
+  sudo apt install terminator -y
 fi
 
 
@@ -38,18 +38,18 @@ if $vscode ; then
   sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
   sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
   rm -f packages.microsoft.gpg
-  sudo apt install apt-transport-https
+  sudo apt install apt-transport-https -y
   sudo apt update
-  sudo apt install code
+  sudo apt install code -y
 fi
 
 # Install Brave
 if $brave ; then
-  sudo apt install apt-transport-https curl
+  sudo apt install apt-transport-https curl -y
   sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
   sudo apt update
-  sudo apt install brave-browser
+  sudo apt install brave-browser -y
 fi
 
 # Install element
@@ -58,21 +58,21 @@ if $element ; then
   sudo wget -O /usr/share/keyrings/element-io-archive-keyring.gpg https://packages.element.io/debian/element-io-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/element-io-archive-keyring.gpg] https://packages.element.io/debian/ default main" | sudo tee /etc/apt/sources.list.d/element-io.list
   sudo apt update
-  sudo apt install element-desktop
+  sudo apt install element-desktop -y
 fi
 
 # Install ROS Noetic
 if $noetic ; then
   sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-  sudo apt install curl
+  sudo apt install curl -y
   curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
   sudo apt update
-  sudo apt install ros-noetic-desktop-full
+  sudo apt install ros-noetic-desktop-full -y
   # source /opt/ros/noetic/setup.bash
   # echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
   # source ~/.bashrc
-  sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-  sudo apt install python3-rosdep
+  sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
+  sudo apt install python3-rosdep -y
   sudo rosdep init
   rosdep update
 fi
@@ -80,30 +80,30 @@ fi
 # Installing ROS 2 Foxy
 if $foxy ; then
   locale  # check for UTF-8
-  sudo apt update && sudo apt install locales
+  sudo apt update && sudo apt install locales -y
   sudo locale-gen en_US en_US.UTF-8
   sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
   export LANG=en_US.UTF-8
   locale  # verify settings
 
-  sudo apt install software-properties-common
+  sudo apt install software-properties-common -y
   sudo add-apt-repository universe
 
-  sudo apt update && sudo apt install curl
+  sudo apt update && sudo apt install curl -y
   sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
   sudo apt update
   sudo apt upgrade
-  sudo apt install ros-foxy-desktop python3-argcomplete
-  sudo apt install ros-dev-tools
+  sudo apt install ros-foxy-desktop python3-argcomplete -y
+  sudo apt install ros-dev-tools -y
 fi
 
 # Install docker
 if $docker ; then
   sudo apt-get update
-  sudo apt-get install \
+  sudo apt-get install -y \
       ca-certificates \
       curl \
       gnupg \
@@ -116,7 +116,7 @@ if $docker ; then
 
   sudo chmod a+r /etc/apt/keyrings/docker.gpg
   sudo apt-get update
-  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
   sudo groupadd docker
   sudo usermod -aG docker $USER
   newgrp docker
@@ -126,8 +126,8 @@ fi
 if $latex ; then
   sudo add-apt-repository ppa:jonathonf/texlive
   sudo apt update   
-  sudo apt install texlive-full
-  tlmgr install abntex2        
+  sudo apt install -y texlive-full
+  tlmgr install -y abntex2        
   tlmgr update abntex2
   tlmgr init-usertree
 fi
@@ -135,15 +135,15 @@ fi
 # # Install Opencv
 if $cv2 ; then
 sudo apt update
-sudo apt install libopencv-dev python3-opencv
+sudo apt install -y libopencv-dev python3-opencv
 python3 -c "import cv2; print(cv2.__version__)"
 fi
 
 # Install tweaks
 if $tweaks ; then
-sudo apt install gnome-tweaks
-sudo apt install gnome-tweak-tool
+sudo apt install -y gnome-tweaks
+sudo apt install -y gnome-tweak-tool
 cd %% mkdir ~/.themes
 cd && mkdir ./icons
-sudo apt install dconf-editor
+sudo apt install -y dconf-editor
 fi
