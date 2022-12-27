@@ -11,8 +11,9 @@ sudo -n true
 # Aks for programs
 USER=tiago
 terminator=false
+alacritty=true
 git=true
-vscode=false
+vscode=true
 brave=true
 element=false
 noetic=false
@@ -20,6 +21,30 @@ foxy=true
 docker=true
 latex=false
 cv2=true
+unity=true
+
+if $unity ; then
+  sudo sh -c 'echo "deb https://hub.unity3d.com/linux/repos/deb stable main" > /etc/apt/sources.list.d/unityhub.list'
+  wget -qO - https://hub.unity3d.com/linux/keys/public | sudo apt-key add -
+  sudo apt update
+  sudo apt-get install unityhub -y
+fi
+
+if $alacritty ; then
+  sudo add-apt-repository ppa:mmstick76/alacritty
+  sudo curl https://sh.rustup.rs -sSf | sh
+  cd
+  git clone https://github.com/jwilm/alacritty.git
+  cd alacritty
+  cargo build --release
+  sudo cp target/release/alacritty /usr/local/bin
+  sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+  sudo desktop-file-install extra/linux/Alacritty.desktop
+  sudo update-desktop-database
+  sudo mkdir -p /usr/local/share/man/man1
+  gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+  echo "source $(pwd)/extra/completions/alacritty.bash" >> ~/.bashrc
+fi
 
 # Install git
 if $git ; then
